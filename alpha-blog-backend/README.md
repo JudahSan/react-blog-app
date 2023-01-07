@@ -53,3 +53,25 @@ npm install express
     "dev": "nodemon src/server.js"
   }
   ```
+
+- [Mongodb setup](https://www.cherryservers.com/blog/how-to-install-and-start-using-mongodb-on-ubuntu-20-04)
+
+  ```
+  mongod --dpath ./mongo-db-data/mongo-db-data
+  ```
+- Run on a diff terminal
+
+  ```
+  mongo
+  ```
+
+  - Create a new database
+  
+  ```
+  use react-blog-db
+  ```
+
+  - Insert json docs
+
+  ```
+  db.articles.insertMany

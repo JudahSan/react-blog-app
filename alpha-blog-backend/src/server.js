@@ -7,6 +7,7 @@ let articlesInfo = [{
 }, {
     name: 'learn-node',
     upvotes: 0,
+    comments: [],
 }, {
     name: 'dark-souls',
     upvotes: 0,
