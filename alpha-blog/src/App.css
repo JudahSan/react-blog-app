@@ -112,3 +112,7 @@ input, textarea {
   top: 8px;
   right: 8px;
 }
+
+.left {
+  margin-left:-20%;/* whatever */
+}

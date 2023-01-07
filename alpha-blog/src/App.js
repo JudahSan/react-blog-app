@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <NavBar />
         <div id="page-body">
-          Welcome weary traveller!
+          
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
