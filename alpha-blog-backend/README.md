@@ -33,3 +33,23 @@ npm install express
   }
 }
 ```
+- `nodemon`
+
+  ```
+  npm install nodemon --save-dev
+  ```
+
+  - run server
+
+  ```
+  npx nodemon <server location>
+  ```
+
+- Add `nodemon` shortcut in `package.json`
+
+  ```json
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  }
+  ```
