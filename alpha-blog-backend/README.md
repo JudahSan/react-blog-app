@@ -87,3 +87,9 @@ npm install express
   ```
   npm install axios
   ```
+
+- firebase
+
+```
+npm install firebase-admin
+```
