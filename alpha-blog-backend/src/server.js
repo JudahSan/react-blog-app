@@ -12,7 +12,7 @@ app.get('/api/articles/:name', async (req, res) => {
   if (article) {
     res.json(article);
   } else {
-    res.sendStatus(404).send('Article not found. Must have been too good to be true.')
+    res.sendStatus(404)
   }
   
 })
