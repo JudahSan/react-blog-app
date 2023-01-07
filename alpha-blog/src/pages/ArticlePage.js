@@ -4,6 +4,7 @@ import NotFoundPage from './NotFoundPage';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentsList from '../components/CommentsList';
+import AddCommentForm from '../components/AddCommentForm';
 
 const ArticlePage = () => {
   const [articleInfo, setArticleInfo] = useState({ upvotes:  0, comments: [] })
@@ -21,17 +22,30 @@ const ArticlePage = () => {
   
   const article = articles.find(article => article.name === articleId);
 
+  const addUpvote = async () => {
+    const response = await axios.put(`/api/articles/${articleId}/upvote`);
+    const updatedArticle = response.data;
+    setArticleInfo(updatedArticle);
+  }
+
   if (!article) {
     return <NotFoundPage />
   }
 
   return (
     <>
-    <h1>{article.title}</h1> 
-    <p>This article has {articleInfo.upvotes } upvote(s)</p>
+    <h1>{article.title}</h1>
+    <div className='upvote-section'>
+      <button onClick={addUpvote}>Like</button> 
+      <p> This article has {articleInfo.upvotes } like(s)</p>
+    </div>
     {article.content.map((paragraph, i) => (
       <p key={i}>{paragraph}</p>
     ))}
+    <AddCommentForm 
+      articleName={articleId}
+      onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)}
+      />
     <CommentsList comments={articleInfo.comments} />
     </>
   );

@@ -18,12 +18,12 @@ h3, h4 {
 }
 
 nav {
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid rgb(0, 0, 128);
   text-align: center;
   position: fixed;
   top: 0;
   width: 100%;
-  background: white;
+  background: rgb(233, 237, 240);
 }
 
 nav ul {
@@ -115,4 +115,8 @@ input, textarea {
 
 .left {
   margin-left:-20%;/* whatever */
+}
+
+.App {
+  background-color: rgb(255, 255, 255);
 }
