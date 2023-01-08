@@ -74,7 +74,12 @@ npm install express
   - Insert json docs
 
   ```
-  db.articles.insertMany
+  db.articles.insertMany([
+    name: 'learn-redux',
+    upvotes:0,
+    comments: [],
+  ])
+  ```
 
   - Mongodb driver package
 
@@ -92,4 +97,10 @@ npm install express
 
 ```
 npm install firebase-admin
+```
+
+-  `.env` package
+
+```
+npm install dotenv
 ```
