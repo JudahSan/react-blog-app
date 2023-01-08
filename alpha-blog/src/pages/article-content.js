@@ -12,9 +12,8 @@ const articles = [
         interdum, nibh elit congue tellus, ac vulputate urna lorem nec nisi. Morbi id 
         consequat quam. Vivamus accumsan dui in facilisis aliquet.`,
         `Start by holding the violin correctly. The violin should rest on the collarbone, 
-          with the left shoulder supporting the neck. The left hand should be placed on 
-          the fingerboard, while the right hand holds the bow.`,
-
+        with the left shoulder supporting the neck. The left hand should be placed on 
+        the fingerboard, while the right hand holds the bow.`,
         `Begin by practicing how to hold the bow correctly. The middle of the bow should 
         rest on the middle of the bow hand, with the thumb and first two fingers holding 
         the bow.`,
