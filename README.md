@@ -23,3 +23,13 @@
     ```
     gcloud app deploy
     ```
+
+Summary
+-
+
+- Creating front-end apps with react
+- Creating backend server with node.js and express
+- Database management with mongodb
+- Authentication with firebase auth
+- Connecting front and backend with axios
+- hosting on GCP

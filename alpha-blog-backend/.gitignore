@@ -3,3 +3,4 @@ node_modules
 mongo-db-data
 build
 .env
+prod-env.yaml
