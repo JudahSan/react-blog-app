@@ -8,26 +8,36 @@ import AddCommentForm from '../components/AddCommentForm';
 import useUser from '../hooks/useUser';
 
 const ArticlePage = () => {
-  const [articleInfo, setArticleInfo] = useState({ upvotes:  0, comments: [] })
+  const [articleInfo, setArticleInfo] = useState({ upvotes:  0, comments: [], canUpvote: false })
+  const { canUpvote } = articleInfo;
   const { articleId } = useParams();
 
   const { user, isLoading } = useUser();
 
   useEffect(() => {
     const loadArticleInfo = async () => {    
-      const response = await axios.get(`/api/articles/${articleId}`);
+      const token = user && await user.getIdToken();
+      const headers = token ? { authtoken: token } : {};
+      const response = await axios.get(`/api/articles/${articleId}`, {
+        headers
+      });
       const newArticleInfo = response.data;
       setArticleInfo(newArticleInfo);
     }
+    if (isLoading) {
+      loadArticleInfo();
+    }
     loadArticleInfo();
-  }, []);
+  }, [isLoading, user]);
 
   
   const article = articles.find(article => article.name === articleId);
 
   const addUpvote = async () => {
-    const response = await axios.put(`/api/articles/${articleId}/upvote`);
+    const response = await axios.put(`/api/articles/${articleId}/upvote`, null, { headers });
     const updatedArticle = response.data;
+    const token = user && await user.getIdToken();
+    const headers = token ? { authtoken: token } : {};
     setArticleInfo(updatedArticle);
   }
 
@@ -40,7 +50,7 @@ const ArticlePage = () => {
     <h1>{article.title}</h1>
     <div className='upvote-section'>
       {user
-        ? <button onClick={addUpvote}>Like</button> 
+        ? <button onClick={addUpvote}>{canUpvote ? 'Like' : 'Aready liked'}</button> 
       : <button onClick={addUpvote}>Log in to Like</button> }
       <p> This article has {articleInfo.upvotes } like(s)</p>
     </div>
