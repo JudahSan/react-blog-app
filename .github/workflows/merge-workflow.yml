@@ -1,0 +1,37 @@
+name: Merge to Main
+on:
+  push:
+    branches:
+      - dev
+  
+jobs:
+  merge-to-stage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge dev into stage
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git fetch origin stage
+          git checkout stage
+          git merge dev --no-ff --no-edit
+          git push origin stage
+
+  merge-to-main:
+    needs: merge-to-stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge stage into main
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git fetch origin main
+          git checkout main
+          git merge stage --no-ff --no-edit
+          git push origin main
