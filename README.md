@@ -72,12 +72,3 @@ To start the development servers:
 
 TODO: update UI, reconfigure backend
 
-Set up React Blog App with frontend and backend integration
-
-This commit adds the initial setup for the React Blog App, combining frontend and backend technologies. It includes:
-
-- Installation of 'react-router-dom' for client-side routing
-- Configuration of proxy for communication between frontend and backend
-- Integration of Firebase and GCP for authentication and deployment
-
-This marks the starting point for developing a feature-rich blog application using React, Node.js, MongoDB, Firebase, and GCP.
