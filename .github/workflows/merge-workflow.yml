@@ -8,6 +8,9 @@ jobs:
   merge-to-stage:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Configure Git
         run: |
           git config user.name "GitHub Actions"
@@ -15,18 +18,35 @@ jobs:
 
       - name: Fetch and checkout stage branch
         run: |
+          cd alpha-blog
           git fetch origin stage
           git checkout -b stage origin/stage
 
-      - name: Merge dev into stage
+      - name: Merge alpha-blog-dev into stage
         run: |
-          git merge dev --no-ff --no-edit --allow-unrelated-histories
+          cd alpha-blog
+          git merge origin/dev --no-ff --no-edit --allow-unrelated-histories
+          git push origin stage
+
+      - name: Fetch and checkout stage branch for alpha-blog-backend
+        run: |
+          cd alpha-blog-backend
+          git fetch origin stage
+          git checkout -b stage origin/stage
+
+      - name: Merge alpha-blog-backend-dev into stage
+        run: |
+          cd alpha-blog-backend
+          git merge origin/dev --no-ff --no-edit --allow-unrelated-histories
           git push origin stage
 
   merge-to-main:
     needs: merge-to-stage
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Configure Git
         run: |
           git config user.name "GitHub Actions"
@@ -34,10 +54,12 @@ jobs:
 
       - name: Fetch and checkout main branch
         run: |
+          cd alpha-blog
           git fetch origin main
           git checkout -b main origin/main
 
       - name: Merge stage into main
         run: |
+          cd alpha-blog
           git merge stage --no-ff --no-edit --allow-unrelated-histories
           git push origin main
